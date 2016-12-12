@@ -11,7 +11,7 @@ var TableView = Backbone.Marionette.View.extend({
     }
   },
   onRender: function(){
-    this.showChildView('body', new TasksView({collection: this.collection}));
+    // this.showChildView('body', new TasksView({collection: this.collection}));
   }
 });
 

@@ -1,6 +1,6 @@
 var Marionette = require('marionette');
 var TableView = require("./views/TableView");
-
+var TasksView = require("./views/TasksView");
 var ActiveTasks = require("./collections/ActiveTasks");
 var CompletedTasks = require("./collections/CompletedTasks");
 
@@ -10,7 +10,6 @@ var Controller = Marionette.Object.extend({
     this.app = options.app;
     
     var tableView = new TableView();
-    
     var activeTasks = new ActiveTasks();
     var completedTasks = new CompletedTasks();
     
@@ -29,17 +28,17 @@ var Controller = Marionette.Object.extend({
     this.options.activeTasks = activeTasks;
     this.options.completedTasks = completedTasks;
     this.options.tableView = tableView;    
-  
+    this.app.view.showChildView('main', this.options.tableView);
+
   },
-  
   active: function(){
     console.log('active route');
-    this.app.view.showChildView('main', new TableView({collection: this.options.activeTasks}));
+    this.options.tableView.showChildView('body', new TasksView({collection: this.options.activeTasks}));
   },
   
   completed: function(){
     console.log('completed route');
-    this.app.view.showChildView('main', new TableView({collection: this.options.completedTasks}));
+    this.options.tableView.showChildView('body', new TasksView({collection: this.options.completedTasks}));
   }
 });
 
