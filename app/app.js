@@ -8,7 +8,7 @@ var App = Marionette.Application.extend({
     this.view = new RootView();
     this.showView(this.view);
     this.Router = new Router({app: this});
-    Backbone.history.start()
+    Backbone.history.start();
   }
 });
 
