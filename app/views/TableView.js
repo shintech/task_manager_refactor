@@ -10,9 +10,6 @@ var TableView = Backbone.Marionette.View.extend({
       replaceElement: true
     }
   },
-  onRender: function(){
-    // this.showChildView('body', new TasksView({collection: this.collection}));
-  }
 });
 
 module.exports = TableView;
